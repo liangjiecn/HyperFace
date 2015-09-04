@@ -1,0 +1,10 @@
+function [outdata,mind,maxd] = normalise(data, p2, p3)
+indata = double(data);
+percent = p3;
+ndata = numel(indata);
+[val,~] = sort(indata(:));
+upos = round(ndata*percent);
+maxd = val(upos);
+mind = min(indata(:));
+outdata = (indata-double(mind)*ones(size(indata))) / (maxd-mind);
+outdata(find(outdata(:)>1)) = 1;
